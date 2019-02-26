@@ -1,42 +1,54 @@
-var date = new Date();
-date.setDate(1);
-
+var today = new Date();
+var firstDay = new Date();
+firstDay.setDate(1);
+  
 window.onload = function() {
-  Generate_Month(date.getMonth());
+  var title = document.getElementById("title")
+  title.innerHTML = "Liturgia de las Horas - " + monthAsString(today.getMonth()) + " de " + today.getFullYear()
+
+
+  genMonth(firstDay.getMonth());
 };
 
 function dayOfWeekAsString(dayIndex) {
   return ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"][dayIndex];
 }
 
-function monthsAsString(monthIndex) {
+function dayAsLink(day) {
+  if (day < 10)
+    return "0" + day
+  else
+    return "" + day
+}
+
+function monthAsString(monthIndex) {
   return ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"][monthIndex];
 }
 
-function createcalendar_jsDay(num, day, month) {
-  var currentcalendar_js = document.getElementById("calendar_js");
+function monthAsLink(monthIndex) {
+  return ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"][monthIndex];
+}
 
-  var newDay = document.createElement("div");
-  var date = document.createElement("p");
-  date.innerHTML = num;
+function createcalendar_jsDay(day, month) {
 
-  var dayElement = document.createElement("p");
-  dayElement.innerHTML = day;
+  var calendar = document.getElementById("calendar_js");
+  var div = document.createElement("div");
+  var p = document.createElement("p");
+  var a = document.createElement("a");
 
-  newDay.className = "calendar_js-day";
+  a.innerHTML = day;
 
-  var dateActual = new Date();
-  if (num == dateActual.getDate() && month == dateActual.getMonth()) {
-    var special_jsElement = document.createElement("p");
-    special_jsElement.className = "special_jsElement";
-    newDay.appendChild(special_jsElement);
-    newDay.className = "calendar_js-day special_js";
+  a.href = "sync/" + today.getFullYear() + "/" + monthAsLink(today.getMonth()) + "/" + dayAsLink(day) + "/index.htm"
+
+  if (day == today.getDate() && month == today.getMonth()) {
+    div.className = "calendar_js-day special_js";
+  } else {
+    div.className = "calendar_js-day";  
   }
 
-  newDay.appendChild(date);
-//  newDay.appendChild(dayElement);
-
-  currentcalendar_js.appendChild(newDay);
+  p.appendChild(a);
+  div.appendChild(p);
+  calendar.appendChild(div);
 }
 
 function jsCalendar_EmptyDays(days) {
@@ -45,7 +57,7 @@ function jsCalendar_EmptyDays(days) {
   for (i = 0; i < days; i++) {
 
     var newDay = document.createElement("div");
-    var date = document.createElement("p");
+    var date = document.createElement("a");
     var dayElement = document.createElement("p");
     newDay.className = "calendar_js-empty";
 
@@ -75,27 +87,27 @@ function clearcalendar_js() {
 }
 
 function Create_Month(i) {
-  date.setMonth(i);
-  Generate_Month(date.getMonth());
+  firstDay.setMonth(i);
+  genMonth(firstDay.getMonth());
 }
 
-// generate a month
-function Generate_Month(month) {
+// Generate a HTML Month ...
+function genMonth(month) {
   clearcalendar_js();
   var currentcalendar_js = document.getElementById("calendar_js");
 
   var date_i = new Date();
-  date_i.setDate(date.getDate());
+  date_i.setDate(1);
   date_i.setMonth(month);
-  date_i.setYear(date.getFullYear());
+  date_i.setYear(date_i.getFullYear());
 
   jsCalendar_EmptyDays(date_i.getDay());
 
-  createcalendar_jsDay(date_i.getDate(), dayOfWeekAsString(date_i.getDay()), date_i.getMonth());
+  createcalendar_jsDay(date_i.getDate(), date_i.getMonth());
   date_i.setDate(date_i.getDate() + 1);
 
   while (date_i.getDate() != 1) {
-    createcalendar_jsDay(date_i.getDate(), dayOfWeekAsString(date_i.getDay()), date_i.getMonth());
+    createcalendar_jsDay(date_i.getDate(), date_i.getMonth());
     date_i.setDate(date_i.getDate() + 1);
   }
 }
