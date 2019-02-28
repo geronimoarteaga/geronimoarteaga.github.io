@@ -10,44 +10,48 @@ body {
   margin: 15px;
   text-align: center;
   width: 100%;
-  font-size: 22px;
   overflow: hidden;
   color: black;
 }
 
 .calendar_js {
-  max-width: 600px;
+  max-width: 400px;
   margin: 0px auto;
+  width: 100%;
 }
 
 .calendar_js-empty {
-  width: 8%;
-  font-size: 22px;
+  width: 9%;
   line-height: 50%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
-  margin: 5px;
+  margin: 3px;
   text-align: center;
   display: inline-block;
   border-radius: 8px;
 }
 
 .calendar_js-day {
-  width: 8%;
+  width: 9%;
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.1);
-  font-size: 22px;
   line-height: 50%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
-  margin: 5px;
+  margin: 3px;
   text-align: center;
   display: inline-block;
   border-radius: 8px;
+}
+
+.calendar_js-day:hover {
+  background-color: #808080;
+  color: white;
+  cursor: pointer;
 }
 
 .day_header {
@@ -57,12 +61,6 @@ body {
 .special_js {
   background-color: #808080;
   box-shadow: 0px 2px 1px 0px black;
-}
-
-.calendar_js-day:hover {
-  background-color: #808080;
-  color: white;
-  cursor: pointer;
 }
 
 .calendar_months {
