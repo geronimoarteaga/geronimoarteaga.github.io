@@ -1,17 +1,16 @@
 var today = new Date();
 var firstDay = new Date();
 firstDay.setDate(1);
-  
+
 window.onload = function() {
   var title = document.getElementById("title")
   title.innerHTML = "Liturgia de las Horas - " + monthAsString(today.getMonth()) + " de " + today.getFullYear()
-
 
   genMonth(firstDay.getMonth());
 };
 
 function dayOfWeekAsString(dayIndex) {
-  return ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"][dayIndex];
+  return ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"][dayIndex];
 }
 
 function dayAsLink(day) {
@@ -43,7 +42,7 @@ function createcalendar_jsDay(day, month) {
   if (day == today.getDate() && month == today.getMonth()) {
     div.className = "calendar_js-day special_js";
   } else {
-    div.className = "calendar_js-day";  
+    div.className = "calendar_js-day";
   }
 
   p.appendChild(a);
