@@ -1,38 +1,9 @@
-body {
-  background-color: #ffffcc;
-  color: #fff;
-  font-family: Verdana, Arial;
-  font-size: 1.1em;
-}
-
-.title {
-  display: inline-block;
-  margin: 15px;
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  color: red;
-}
-
-.calendar_js {
+.calendar {
   max-width: 344px;
   margin: 0px auto;
 }
 
-.calendar_js-empty {
-  width: 9%;
-  line-height: 50%;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin: 3px;
-  text-align: center;
-  display: inline-block;
-  border-radius: 8px;
-}
-
-.calendar_js-day {
+.calendar_day {
   width: 9%;
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.1);
@@ -47,31 +18,46 @@ body {
   border-radius: 8px;
 }
 
-.calendar_js-day:hover {
+.calendar_day:hover {
   background-color: #808080;
   color: white;
   cursor: pointer;
 }
 
-.day_header {
+.calendar_day_header {
   background-color: #808080;
+  color: white;
 }
 
-.special_js {
+.calendar_day_empty {
+  width: 9%;
+  line-height: 50%;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 3px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+.calendar_day_special {
   background-color: #808080;
   box-shadow: 0px 2px 1px 0px black;
 }
 
-.calendar_months {
+.months {
   text-align: center;
   width: 100%;
   overflow: hidden;
-  color: gray;
+  color: red;
 }
 
 .month {
+  color: red;
+  cursor: pointer;
   display: inline-block;
   margin: 15px;
-  cursor: pointer;
   text-decoration: underline;
 }
