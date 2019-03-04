@@ -33,7 +33,7 @@ function clearCalendar() {
     var dayElement = document.createElement("p");
 
     dayElement.innerHTML = dayOfWeekAsString(i);
-    newDay.className = "calendar_day calendar_day_header";
+    newDay.className = "calendar_day_header";
     newDay.appendChild(dayElement);
 
     currentCalendar.appendChild(newDay);
@@ -64,8 +64,16 @@ function createCalendarDay(day, month) {
   a.innerHTML = day;
   a.href = "sync/" + today.getFullYear() + "/" + monthAsLink(month) + "/" + dayAsLink(day);
 
+  var currentDate = new Date();
+  currentDate.setDate(day);
+  currentDate.setMonth(month);
+  if (currentDate.getDay() == 0) {
+    a.className = "sunday";
+  }
+
   if (day == today.getDate() && month == today.getMonth()) {
     div.className = "calendar_day calendar_day_special";
+    a.className = "special";
   } else {
     div.className = "calendar_day";
   }
